@@ -6,6 +6,7 @@ This is a solver for the 8-queens problem that I wrote in go.
 
 ## What is the 8-queens problem?
 It is a puzzle where you are asked to place 8 queens on a chess board so that they do not attack eachother.
+For more info see [the wikipedia article](https://en.wikipedia.org/wiki/Eight_queens_puzzle)
 
 ## Why write a solver if all solutions are already known?
 Because I thought it would be a nice exercise which I could solve in the go programming language as practice.
