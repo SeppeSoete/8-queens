@@ -8,7 +8,7 @@ type Board struct {
 
 /*
 Replaces the column of the Board with one that has a queen on specified square
-row and col must both be between 1 and 8
+row and col must both be between 0 and 7
 */
 func (b Board) PlaceQueen(row int, col int) Board{
     b.board[row * 8 + col] = true
@@ -17,6 +17,10 @@ func (b Board) PlaceQueen(row int, col int) Board{
     return b
 }
 
+/*
+Checks if a queen is placed on the board on the given square
+row and col must both be between 0 and 7
+*/
 func (b Board) HasQueen(row int, col int) bool {
     return b.board[row * 8 + col]
 }
@@ -48,14 +52,26 @@ func (b Board) colIsFilled(col int) bool{
     return b.colFilled[col]
 }
 
+/*
+Checks if a queen can be placed on the board on the given square so that it is not attacked by any of the queens already on the board
+row and col must both be between 0 and 7
+*/
 func (b Board) CanPlaceQueen(row int, col int) bool {
     return !(b.rowIsFilled(row) || b.colIsFilled(col) || b.queenOnDiags(row, col))
 }
 
+/*
+Check if this board has the same configuration as the given board
+*/
 func (a Board) Equals(b Board) bool{
     return a.board == b.board
 }
 
+/*
+Same as CanPlaceQueen, except we do not check if there is already a queen in the same column. 
+This is purely because for our algorithm in the 8-queens problem we incrementally fill the columns
+row and col must both be between 0 and 7
+*/
 func (b Board) CanPlaceQueenNoVertCheck(row int, col int) bool {
     if b.queenOnDiags(row, col) || b.rowIsFilled(row) {
         return false
@@ -63,6 +79,9 @@ func (b Board) CanPlaceQueenNoVertCheck(row int, col int) bool {
     return true
 }
 
+/*
+Gives a string representation of the board
+*/
 func (b Board) ToString() string {
     var s string
     for r := 0; r < 8; r++ {
