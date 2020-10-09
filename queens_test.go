@@ -2,7 +2,7 @@ package main
 
 import(
     "testing"
-    "queens/board"
+    "github.com/SeppeSoete/8-queens/board"
 )
 
 func TestHasQueen(t *testing.T) {
