@@ -2,7 +2,7 @@ package main
 
 import (
 	"errors"
-	"queens/board"
+	"github.com/SeppeSoete/queens/board"
     "fmt"
 )
 
