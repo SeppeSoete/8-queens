@@ -27,13 +27,10 @@ func (b Board) HasQueen(row int, col int) bool {
 
 
 func (b Board) queenOnDiags(row int, col int) bool {
-	if b.queenOnPartialDiagonal(row, col, 1, 1) ||
+	return b.queenOnPartialDiagonal(row, col, 1, 1) ||
 		b.queenOnPartialDiagonal(row, col, 1, -1) ||
 		b.queenOnPartialDiagonal(row, col, -1, 1) ||
-		b.queenOnPartialDiagonal(row, col, -1, -1) {
-		return true
-	}
-	return false
+		b.queenOnPartialDiagonal(row, col, -1, -1)
 }
 
 func (b Board) queenOnPartialDiagonal(row int, col int, deltaRow int, deltaCol int) bool {
@@ -73,10 +70,7 @@ This is purely because for our algorithm in the 8-queens problem we incrementall
 row and col must both be between 0 and 7
 */
 func (b Board) CanPlaceQueenNoVertCheck(row int, col int) bool {
-    if b.queenOnDiags(row, col) || b.rowIsFilled(row) {
-        return false
-    }
-    return true
+    return !(b.queenOnDiags(row, col) || b.rowIsFilled(row))
 }
 
 /*
